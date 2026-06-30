@@ -1,0 +1,87 @@
+/* ============================================================
+   ONBOARDING — 6-step carousel, iOS HIG
+   ============================================================ */
+
+.ob-steps-wrap { flex: 1; overflow: hidden; position: relative; }
+
+.ob-step {
+  position: absolute; inset: 0;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  padding: 28px 16px 0;
+  gap: 20px;
+  overflow-y: auto;
+  scrollbar-width: none;
+}
+.ob-step::-webkit-scrollbar { display: none; }
+.ob-step.active { display: flex; }
+
+/* Illustration circle */
+.ob-illus {
+  width: 160px; height: 160px;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 64px;
+  margin: 0 auto;
+  flex-shrink: 0;
+}
+.ob-illus--welcome,
+.ob-illus--feed,
+.ob-illus--grow,
+.ob-illus--learn,
+.ob-illus--emerg { background: var(--ios-gray-5); }
+
+.ob-title {
+  font: 700 26px/32px var(--ios-font);
+  color: var(--ios-label);
+  letter-spacing: -0.5px;
+  text-align: center;
+  text-wrap: balance;
+}
+.ob-body {
+  font: 400 15px/20px var(--ios-font);
+  color: var(--ios-label-secondary);
+  line-height: 1.55;
+  text-align: center;
+  text-wrap: balance;
+}
+
+/* ToS step */
+#ob-5 .ob-title { align-self: flex-start; text-align: left; }
+
+.ob-tos-list { display: flex; flex-direction: column; gap: 0; width: 100%; }
+
+.tos-item {
+  display: flex; gap: 14px;
+  padding: 14px 16px;
+  background: var(--ios-bg-grouped-secondary);
+  border-bottom: 0.5px solid var(--ios-separator);
+}
+.ob-tos-list .tos-item:first-child {
+  border-radius: var(--ios-radius-card) var(--ios-radius-card) 0 0;
+}
+.ob-tos-list .tos-item:last-child {
+  border-bottom: none;
+  border-radius: 0 0 var(--ios-radius-card) var(--ios-radius-card);
+}
+
+.tos-ico   { font-size: 20px; flex-shrink: 0; margin-top: 1px; }
+.tos-title { font: 600 15px/20px var(--ios-font); color: var(--ios-label); }
+.tos-body  { font: 400 13px/18px var(--ios-font); color: var(--ios-label-secondary); margin-top: 3px; }
+
+/* Pagination dots */
+.ob-dots {
+  display: flex; align-items: center; justify-content: center;
+  gap: 6px;
+  padding: 14px 16px 4px;
+  flex-shrink: 0;
+}
+.ob-dot {
+  height: 8px;
+  border-radius: 4px;
+  background: var(--ios-gray-4);
+  transition: all 0.22s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.ob-dot.active       { width: 22px; background: var(--ios-blue); }
+.ob-dot:not(.active) { width: 8px; }

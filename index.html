@@ -1,0 +1,937 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#007AFF">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <title>Dad Pal</title>
+  <link rel="manifest" href="/manifest.json">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg'><text y='32' font-size='32'>👶</text></svg>">
+</head>
+<body>
+
+<div class="phone">
+ <div class="screens">
+
+  <!-- ══════════════════════════════════════════
+       SPLASH
+  ══════════════════════════════════════════ -->
+  <div class="screen active" id="s-splash">
+   <div class="splash-logo">DP</div>
+   <div class="splash-title">Dad Pal</div>
+   <p class="splash-sub">Your guide to fatherhood</p>
+  </div>
+
+  <!-- ══════════════════════════════════════════
+       LOGIN
+  ══════════════════════════════════════════ -->
+  <div class="screen" id="s-login">
+   <div class="sb"><span class="sb-time"></span><span class="sb-icons">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 20h.01"/><path d="M7 20v-4"/><path d="M12 20v-8"/><path d="M17 20V8"/><path d="M22 4v16"/></svg>
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><line x1="12" x2="12.01" y1="20" y2="20"/></svg>
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="16" height="10" x="2" y="7" rx="2" ry="2"/><line x1="22" x2="22" y1="11" y2="13"/><rect x="4" y="9" width="10" height="6" rx="1" fill="currentColor" stroke="none"/></svg>
+   </span></div>
+   <div class="auth-scroll">
+    <div class="auth-header">
+     <div class="auth-eyebrow">Welcome back</div>
+     <h1 class="auth-title">Sign in to<br>Dad Pal</h1>
+     <p class="auth-subtitle">Continue your fatherhood journey.</p>
+    </div>
+    <div class="auth-form-card">
+     <div class="auth-field">
+      <span class="auth-field-label">Email</span>
+      <input type="email" placeholder="you@email.com">
+     </div>
+     <div class="auth-field">
+      <span class="auth-field-label">Password</span>
+      <input id="li-pw" type="password" placeholder="Required">
+      <button class="auth-pw-tog" onclick="togglePw('li-pw', this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg></button>
+     </div>
+    </div>
+    <div class="auth-link-row"><a class="flink" onclick="goto('s-forgot')">Forgot password?</a></div>
+   </div>
+   <div class="ftcta ftcta-auth">
+    <div class="bstack">
+     <button class="btn btn-p" onclick="loginAction()">Sign In</button>
+     <button class="btn btn-s" onclick="goto('s-signup')">Create Account</button>
+    </div>
+   </div>
+   <div class="hi"></div>
+  </div>
+
+  <!-- ══════════════════════════════════════════
+       FORGOT PASSWORD
+  ══════════════════════════════════════════ -->
+  <div class="screen" id="s-forgot">
+   <div class="sb"><span class="sb-time"></span><span class="sb-icons">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 20h.01"/><path d="M7 20v-4"/><path d="M12 20v-8"/><path d="M17 20V8"/><path d="M22 4v16"/></svg>
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><line x1="12" x2="12.01" y1="20" y2="20"/></svg>
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="16" height="10" x="2" y="7" rx="2" ry="2"/><line x1="22" x2="22" y1="11" y2="13"/><rect x="4" y="9" width="10" height="6" rx="1" fill="currentColor" stroke="none"/></svg>
+   </span></div>
+   <div class="ios-nav-bar">
+    <button class="ios-nav-back" onclick="goto('s-login')"><svg viewBox="0 0 10 17" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 1.5L1.5 8.5L9 15.5"/></svg>Sign In</button>
+    <span class="ios-nav-title">Reset Password</span>
+   </div>
+   <div class="auth-scroll">
+    <div class="auth-header">
+     <h1 class="auth-title">Forgot password?</h1>
+     <p class="auth-subtitle">Enter your email and we'll send a reset link.</p>
+    </div>
+    <div class="auth-form-card">
+     <div class="auth-field">
+      <span class="auth-field-label">Email</span>
+      <input type="email" placeholder="you@email.com">
+     </div>
+    </div>
+   </div>
+   <div class="ftcta ftcta-auth">
+    <button class="btn btn-p" onclick="goto('s-otp')">Send Reset Link</button>
+   </div>
+   <div class="hi"></div>
+  </div>
+
+  <!-- ══════════════════════════════════════════
+       OTP
+  ══════════════════════════════════════════ -->
+  <div class="screen" id="s-otp">
+   <div class="sb"><span class="sb-time"></span><span class="sb-icons">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 20h.01"/><path d="M7 20v-4"/><path d="M12 20v-8"/><path d="M17 20V8"/><path d="M22 4v16"/></svg>
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><line x1="12" x2="12.01" y1="20" y2="20"/></svg>
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="16" height="10" x="2" y="7" rx="2" ry="2"/><line x1="22" x2="22" y1="11" y2="13"/><rect x="4" y="9" width="10" height="6" rx="1" fill="currentColor" stroke="none"/></svg>
+   </span></div>
+   <div class="ios-nav-bar">
+    <button class="ios-nav-back" onclick="goto('s-forgot')"><svg viewBox="0 0 10 17" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 1.5L1.5 8.5L9 15.5"/></svg>Back</button>
+    <span class="ios-nav-title">Verify Email</span>
+   </div>
+   <div class="auth-scroll">
+    <div class="auth-header">
+     <h1 class="auth-title">Enter code</h1>
+     <p class="auth-subtitle">6-digit code sent to <strong>john@email.com</strong></p>
+    </div>
+    <div style="padding:0 16px">
+     <div class="otp-grid">
+      <input class="otp-box" maxlength="1" type="tel" inputmode="numeric">
+      <input class="otp-box" maxlength="1" type="tel" inputmode="numeric">
+      <input class="otp-box" maxlength="1" type="tel" inputmode="numeric">
+      <input class="otp-box" maxlength="1" type="tel" inputmode="numeric">
+      <input class="otp-box" maxlength="1" type="tel" inputmode="numeric">
+      <input class="otp-box" maxlength="1" type="tel" inputmode="numeric">
+     </div>
+     <p class="otp-resend">Didn't receive it? <a id="resend-link" onclick="resendCode()">Resend code</a></p>
+    </div>
+   </div>
+   <div class="ftcta ftcta-auth">
+    <button class="btn btn-p" onclick="verifyOTP()">Verify &amp; Continue</button>
+   </div>
+   <div class="hi"></div>
+  </div>
+
+  <!-- ══════════════════════════════════════════
+       SIGN UP
+  ══════════════════════════════════════════ -->
+  <div class="screen" id="s-signup">
+   <div class="sb"><span class="sb-time"></span><span class="sb-icons">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 20h.01"/><path d="M7 20v-4"/><path d="M12 20v-8"/><path d="M17 20V8"/><path d="M22 4v16"/></svg>
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><line x1="12" x2="12.01" y1="20" y2="20"/></svg>
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="16" height="10" x="2" y="7" rx="2" ry="2"/><line x1="22" x2="22" y1="11" y2="13"/><rect x="4" y="9" width="10" height="6" rx="1" fill="currentColor" stroke="none"/></svg>
+   </span></div>
+   <div class="ios-nav-bar">
+    <button class="ios-nav-back" onclick="goto('s-login')"><svg viewBox="0 0 10 17" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 1.5L1.5 8.5L9 15.5"/></svg>Sign In</button>
+    <span class="ios-nav-title">Create Account</span>
+   </div>
+   <div class="auth-scroll">
+    <div class="auth-header">
+     <h1 class="auth-title">Join Dad Pal</h1>
+     <p class="auth-subtitle">Thousands of dads on their journey.</p>
+    </div>
+    <div class="auth-form-card">
+     <div class="auth-field">
+      <span class="auth-field-label">Name</span>
+      <input type="text" placeholder="James Wilson">
+     </div>
+     <div class="auth-field">
+      <span class="auth-field-label">Email</span>
+      <input type="email" placeholder="you@email.com">
+     </div>
+     <div class="auth-field">
+      <span class="auth-field-label">Password</span>
+      <input id="su-pw" type="password" placeholder="Min. 8 characters">
+      <button class="auth-pw-tog" onclick="togglePw('su-pw', this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg></button>
+     </div>
+     <div class="auth-field">
+      <span class="auth-field-label">Confirm</span>
+      <input type="password" placeholder="Repeat password">
+     </div>
+    </div>
+    <div style="padding:12px 20px 0">
+     <div class="cbrow" onclick="toggleCb(this)">
+      <div class="cb">✓</div>
+      <span class="cb-label">I agree to the <a>Terms of Service</a> and <a>Privacy Policy</a></span>
+     </div>
+    </div>
+   </div>
+   <div class="ftcta ftcta-auth">
+    <button class="btn btn-p" onclick="signupAction()">Create Account</button>
+   </div>
+   <div class="hi"></div>
+  </div>
+
+  <!-- ══════════════════════════════════════════
+       ACCOUNT CREATED
+  ══════════════════════════════════════════ -->
+  <div class="screen" id="s-created">
+   <div class="sb"><span class="sb-time"></span><span class="sb-icons">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 20h.01"/><path d="M7 20v-4"/><path d="M12 20v-8"/><path d="M17 20V8"/><path d="M22 4v16"/></svg>
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><line x1="12" x2="12.01" y1="20" y2="20"/></svg>
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="16" height="10" x="2" y="7" rx="2" ry="2"/><line x1="22" x2="22" y1="11" y2="13"/><rect x="4" y="9" width="10" height="6" rx="1" fill="currentColor" stroke="none"/></svg>
+   </span></div>
+   <div class="created-content">
+    <div class="success-ico">✓</div>
+    <h2 style="font:700 28px/34px var(--ios-font);letter-spacing:-0.5px;color:var(--ios-label);margin-top:24px">You're in, Dad!</h2>
+    <p style="font:400 17px/22px var(--ios-font);color:var(--ios-label-secondary);margin-top:10px">Your account is ready. Time to start your fatherhood journey.</p>
+   </div>
+   <div class="ftcta ftcta-auth">
+    <button class="btn btn-p" onclick="goto('s-onboarding'); startOb()">Get Started</button>
+   </div>
+   <div class="hi"></div>
+  </div>
+
+  <!-- ══════════════════════════════════════════
+       ONBOARDING
+  ══════════════════════════════════════════ -->
+  <div class="screen" id="s-onboarding">
+   <div class="sb"><span class="sb-time"></span><span class="sb-icons">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 20h.01"/><path d="M7 20v-4"/><path d="M12 20v-8"/><path d="M17 20V8"/><path d="M22 4v16"/></svg>
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><line x1="12" x2="12.01" y1="20" y2="20"/></svg>
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="16" height="10" x="2" y="7" rx="2" ry="2"/><line x1="22" x2="22" y1="11" y2="13"/><rect x="4" y="9" width="10" height="6" rx="1" fill="currentColor" stroke="none"/></svg>
+   </span></div>
+   <div class="ob-steps-wrap">
+    <div class="ob-step active" id="ob-0">
+     <div class="ob-illus ob-illus--welcome">👋</div>
+     <p class="ob-title">Welcome to Dad Pal</p>
+     <p class="ob-body">Everything you need to be the best dad you can be — feeding, milestones, learning, and emergency support in one place.</p>
+    </div>
+    <div class="ob-step" id="ob-1">
+     <div class="ob-illus ob-illus--feed">🍼</div>
+     <p class="ob-title">Track feeding &amp; nutrition</p>
+     <p class="ob-body">Log every meal, track allergens, and get age-appropriate food guides. Know exactly what your baby ate and when.</p>
+    </div>
+    <div class="ob-step" id="ob-2">
+     <div class="ob-illus ob-illus--grow">🌱</div>
+     <p class="ob-title">Never miss a milestone</p>
+     <p class="ob-body">Track your baby's developmental milestones week by week. Celebrate every smile, roll, step, and word.</p>
+    </div>
+    <div class="ob-step" id="ob-3">
+     <div class="ob-illus ob-illus--learn">📚</div>
+     <p class="ob-title">Dad-ssentials library</p>
+     <p class="ob-body">Expert articles, guides, and videos — curated for dads. From sleep training to nutrition, we've got you covered.</p>
+    </div>
+    <div class="ob-step" id="ob-4">
+     <div class="ob-illus ob-illus--emerg">🚨</div>
+     <p class="ob-title">Emergency guidance</p>
+     <p class="ob-body">Step-by-step first aid, emergency contacts, and calm guidance for when every second counts. Always within reach.</p>
+    </div>
+    <div class="ob-step" id="ob-5">
+     <p class="ob-title">Terms of Service</p>
+     <div class="ob-tos-list">
+      <div class="tos-item"><div class="tos-ico">📋</div><div><div class="tos-title">Data Collection</div><div class="tos-body">We collect only what's needed to personalise your experience. You own your data.</div></div></div>
+      <div class="tos-item"><div class="tos-ico">🔒</div><div><div class="tos-title">Privacy</div><div class="tos-body">Your family's information is never sold or shared with third parties.</div></div></div>
+      <div class="tos-item"><div class="tos-ico">👶</div><div><div class="tos-title">Child Safety</div><div class="tos-body">Dad Pal follows COPPA guidelines. Your child's data is protected with the highest standards.</div></div></div>
+      <div class="tos-item"><div class="tos-ico">📧</div><div><div class="tos-title">Communications</div><div class="tos-body">We'll only email you about your account and updates. Unsubscribe any time.</div></div></div>
+     </div>
+    </div>
+   </div>
+   <div class="ob-dots">
+    <div class="ob-dot active"></div>
+    <div class="ob-dot"></div>
+    <div class="ob-dot"></div>
+    <div class="ob-dot"></div>
+    <div class="ob-dot"></div>
+    <div class="ob-dot"></div>
+   </div>
+   <div class="ftcta">
+    <div class="bstack">
+     <button class="btn btn-p" id="ob-next" onclick="obNext()">Get Started</button>
+     <button class="btn btn-text" id="ob-skip" onclick="obSkip()">I already have an account</button>
+    </div>
+   </div>
+   <div class="hi"></div>
+  </div>
+
+  <!-- ══════════════════════════════════════════
+       MAIN APP
+  ══════════════════════════════════════════ -->
+  <div class="screen" id="s-main">
+   <div class="sb sb-grouped"><span class="sb-time"></span><span class="sb-icons">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 20h.01"/><path d="M7 20v-4"/><path d="M12 20v-8"/><path d="M17 20V8"/><path d="M22 4v16"/></svg>
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><line x1="12" x2="12.01" y1="20" y2="20"/></svg>
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="16" height="10" x="2" y="7" rx="2" ry="2"/><line x1="22" x2="22" y1="11" y2="13"/><rect x="4" y="9" width="10" height="6" rx="1" fill="currentColor" stroke="none"/></svg>
+   </span></div>
+
+   <div class="tab-panels">
+
+    <!-- ── HOME ── -->
+    <div class="tp active" id="tp-home">
+     <div class="home-header">
+      <div class="home-top">
+       <div>
+        <div class="home-gr">Good morning, James 👋</div>
+        <div class="home-date">Monday, June 30 · Oliver is 8 months old</div>
+       </div>
+       <button class="av-btn" onclick="switchTab('tp-profile')">JW</button>
+      </div>
+      <div class="baby-card">
+       <div>
+        <div class="baby-name">Oliver James</div>
+        <div class="baby-age">8 months · 16.2 lbs · 26.4 in</div>
+       </div>
+       <div class="baby-emoji">👶</div>
+      </div>
+     </div>
+
+     <div class="home-body">
+      <div class="home-sec">
+       <div class="sec-head"><span class="sec-title">Today</span></div>
+       <div class="stat-row">
+        <div class="spill"><div class="sv">4</div><div class="sl">Feeds</div></div>
+        <div class="spill"><div class="sv">18<span style="font-size:14px">oz</span></div><div class="sl">Intake</div></div>
+        <div class="spill"><div class="sv">2h</div><div class="sl">Since last</div></div>
+       </div>
+      </div>
+
+      <div class="home-sec">
+       <div class="sec-head"><span class="sec-title">Quick actions</span></div>
+       <div class="ios-card act-grid">
+        <button class="act-card" onclick="switchTab('tp-feeding')">
+         <div class="act-ico ai-g">🍼</div>
+         <div><div class="act-lbl">Log Food</div><div class="act-sub">Add a feeding entry</div></div>
+         <div class="act-ch"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg></div>
+        </button>
+        <button class="act-card" onclick="goto('s-milestones')">
+         <div class="act-ico ai-b">🌱</div>
+         <div><div class="act-lbl">Milestones</div><div class="act-sub">Track development</div></div>
+         <div class="act-ch"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg></div>
+        </button>
+        <button class="act-card" onclick="switchTab('tp-meals')">
+         <div class="act-ico ai-p">🍽️</div>
+         <div><div class="act-lbl">Meal Library</div><div class="act-sub">Browse recipes</div></div>
+         <div class="act-ch"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg></div>
+        </button>
+        <button class="act-card" onclick="switchTab('tp-education')">
+         <div class="act-ico ai-o">📚</div>
+         <div><div class="act-lbl">Learn</div><div class="act-sub">Dad-ssentials</div></div>
+         <div class="act-ch"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg></div>
+        </button>
+       </div>
+      </div>
+
+      <div class="home-sec">
+       <div class="sec-head">
+        <span class="sec-title">Today's feeds</span>
+        <button class="sec-link" onclick="switchTab('tp-feeding')">See all</button>
+       </div>
+       <div class="log-list">
+        <div class="log-e"><div class="log-ico">🍼</div><div class="log-inf"><div class="log-name">Breast milk</div><div class="log-meta">5 oz · Bottle</div></div><div class="log-time">7:00 AM</div></div>
+        <div class="log-e"><div class="log-ico">🥣</div><div class="log-inf"><div class="log-name">Oatmeal puree</div><div class="log-meta">2 tbsp · Solids</div></div><div class="log-time">10:30 AM</div></div>
+        <div class="log-e"><div class="log-ico">🍼</div><div class="log-inf"><div class="log-name">Formula</div><div class="log-meta">6 oz · Bottle</div></div><div class="log-time">1:15 PM</div></div>
+        <div class="log-e"><div class="log-ico">🍌</div><div class="log-inf"><div class="log-name">Banana mash</div><div class="log-meta">1 tbsp · Solids</div></div><div class="log-time">4:00 PM</div></div>
+       </div>
+      </div>
+
+      <div class="home-sec">
+       <div class="sec-head">
+        <span class="sec-title">Milestones</span>
+        <button class="sec-link" onclick="goto('s-milestones')">See all</button>
+       </div>
+       <div class="ms-list">
+        <div class="ms-item" onclick="toggleMs(this)" data-ms-id="ms9"><div class="ms-check ms-done">✓</div><div class="ms-lbl">Sits without support</div><div class="ms-age">7 mo</div></div>
+        <div class="ms-item" onclick="toggleMs(this)" data-ms-id="ms10"><div class="ms-check ms-done">✓</div><div class="ms-lbl">Responds to name</div><div class="ms-age">7 mo</div></div>
+        <div class="ms-item" onclick="toggleMs(this)" data-ms-id="ms13"><div class="ms-check ms-pend"></div><div class="ms-lbl">Pulls to stand</div><div class="ms-age">8–10 mo</div></div>
+        <div class="ms-item" onclick="toggleMs(this)" data-ms-id="ms14"><div class="ms-check ms-pend"></div><div class="ms-lbl">Pincer grasp</div><div class="ms-age">8–10 mo</div></div>
+       </div>
+      </div>
+
+      <div class="home-sec" style="margin-bottom:24px">
+       <button class="emg-card" onclick="goto('s-emergency')">
+        <div class="emg-badge">🚨</div>
+        <div>
+         <div class="emg-title">Emergency Guidance</div>
+         <div class="emg-sub">First aid, choking, fever — step-by-step help</div>
+        </div>
+        <div class="emg-chevron"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:16px;height:16px"><path d="m9 18 6-6-6-6"/></svg></div>
+       </button>
+      </div>
+     </div>
+    </div><!-- /tp-home -->
+
+    <!-- ── FEEDING ── -->
+    <div class="tp" id="tp-feeding" style="position:relative">
+     <div class="tab-hdr"><div class="tab-title">Feeding Log</div></div>
+     <div class="chips-row">
+      <button class="chip ch-on"  onclick="filterChip(this)">All</button>
+      <button class="chip ch-off" onclick="filterChip(this)">Breast milk</button>
+      <button class="chip ch-off" onclick="filterChip(this)">Formula</button>
+      <button class="chip ch-off" onclick="filterChip(this)">Purees</button>
+      <button class="chip ch-off" onclick="filterChip(this)">Solids</button>
+     </div>
+     <div class="feed-stats">
+      <div class="fs"><div class="fsv">4</div><div class="fsl">Feeds today</div></div>
+      <div class="fs"><div class="fsv">18oz</div><div class="fsl">Total intake</div></div>
+      <div class="fs"><div class="fsv">2h</div><div class="fsl">Since last</div></div>
+     </div>
+     <div class="lscroll">
+      <div class="log-list">
+       <div class="log-e"><div class="log-ico">🍼</div><div class="log-inf"><div class="log-name">Breast milk</div><div class="log-meta">5 oz · Bottle · Left side</div></div><div class="log-time">7:00 AM</div></div>
+       <div class="log-e"><div class="log-ico">🥣</div><div class="log-inf"><div class="log-name">Oatmeal puree</div><div class="log-meta">2 tbsp · Solids</div></div><div class="log-time">10:30 AM</div></div>
+       <div class="log-e"><div class="log-ico">🍼</div><div class="log-inf"><div class="log-name">Formula</div><div class="log-meta">6 oz · Similac Pro-Advance</div></div><div class="log-time">1:15 PM</div></div>
+       <div class="log-e"><div class="log-ico">🍌</div><div class="log-inf"><div class="log-name">Banana mash</div><div class="log-meta">1 tbsp · Solids</div></div><div class="log-time">4:00 PM</div></div>
+       <div class="log-date-sep">Yesterday</div>
+       <div class="log-e"><div class="log-ico">🍼</div><div class="log-inf"><div class="log-name">Breast milk</div><div class="log-meta">5 oz · Bottle</div></div><div class="log-time">7:30 PM</div></div>
+       <div class="log-e"><div class="log-ico">🥕</div><div class="log-inf"><div class="log-name">Sweet potato puree</div><div class="log-meta">3 tbsp · Solids</div></div><div class="log-time">5:00 PM</div></div>
+       <div class="log-e"><div class="log-ico">🍼</div><div class="log-inf"><div class="log-name">Formula</div><div class="log-meta">5 oz · Bottle</div></div><div class="log-time">12:45 PM</div></div>
+      </div>
+     </div>
+     <button class="fab" onclick="openAddFood()">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
+     </button>
+    </div><!-- /tp-feeding -->
+
+    <!-- ── MEALS ── -->
+    <div class="tp" id="tp-meals">
+     <div class="tab-hdr"><div class="tab-title">Meal Library</div></div>
+     <div class="chips-row">
+      <button class="chip ch-on"  onclick="filterChip(this)">All</button>
+      <button class="chip ch-off" onclick="filterChip(this)">Purees</button>
+      <button class="chip ch-off" onclick="filterChip(this)">Finger foods</button>
+      <button class="chip ch-off" onclick="filterChip(this)">Snacks</button>
+     </div>
+     <div style="overflow-y:auto;flex:1;background:var(--ios-bg-grouped)">
+      <div style="padding:16px 16px 24px">
+       <div class="meals-grid">
+        <div class="meal-card" onclick="openMeal(0)"><div class="meal-thumb mt-orange">🥕</div><div class="meal-body"><div class="meal-name">Sweet potato mash</div><div class="meal-age">4–6 months +</div></div><svg style="width:14px;height:14px;color:var(--ios-label-tertiary);flex-shrink:0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg></div>
+        <div class="meal-card" onclick="openMeal(1)"><div class="meal-thumb mt-green">🥦</div><div class="meal-body"><div class="meal-name">Broccoli purée</div><div class="meal-age">6 months +</div></div><svg style="width:14px;height:14px;color:var(--ios-label-tertiary);flex-shrink:0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg></div>
+        <div class="meal-card" onclick="openMeal(2)"><div class="meal-thumb mt-red">🍎</div><div class="meal-body"><div class="meal-name">Apple &amp; oat blend</div><div class="meal-age">6 months +</div></div><svg style="width:14px;height:14px;color:var(--ios-label-tertiary);flex-shrink:0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg></div>
+        <div class="meal-card" onclick="openMeal(3)"><div class="meal-thumb mt-indigo">🫐</div><div class="meal-body"><div class="meal-name">Blueberry smash</div><div class="meal-age">7 months +</div></div><svg style="width:14px;height:14px;color:var(--ios-label-tertiary);flex-shrink:0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg></div>
+        <div class="meal-card" onclick="openMeal(4)"><div class="meal-thumb mt-orange">🥑</div><div class="meal-body"><div class="meal-name">Avocado fingers</div><div class="meal-age">7 months +</div></div><svg style="width:14px;height:14px;color:var(--ios-label-tertiary);flex-shrink:0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg></div>
+        <div class="meal-card" onclick="openMeal(5)"><div class="meal-thumb mt-yellow">🍌</div><div class="meal-body"><div class="meal-name">Banana pancakes</div><div class="meal-age">8 months +</div></div><svg style="width:14px;height:14px;color:var(--ios-label-tertiary);flex-shrink:0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg></div>
+        <div class="meal-card" onclick="openMeal(6)"><div class="meal-thumb mt-mint">🥣</div><div class="meal-body"><div class="meal-name">Oatmeal with pear</div><div class="meal-age">5 months +</div></div><svg style="width:14px;height:14px;color:var(--ios-label-tertiary);flex-shrink:0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg></div>
+        <div class="meal-card" onclick="openMeal(7)"><div class="meal-thumb mt-pink">🍓</div><div class="meal-body"><div class="meal-name">Strawberry yogurt</div><div class="meal-age">9 months +</div></div><svg style="width:14px;height:14px;color:var(--ios-label-tertiary);flex-shrink:0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg></div>
+       </div>
+      </div>
+     </div>
+    </div><!-- /tp-meals -->
+
+    <!-- ── EDUCATION ── -->
+    <div class="tp" id="tp-education">
+     <div class="tab-hdr"><div class="tab-title">Dad-ssentials</div></div>
+     <div class="chips-row">
+      <button class="chip ch-on"  onclick="filterChip(this)">All</button>
+      <button class="chip ch-off" onclick="filterChip(this)">Nutrition</button>
+      <button class="chip ch-off" onclick="filterChip(this)">Development</button>
+      <button class="chip ch-off" onclick="filterChip(this)">Safety</button>
+      <button class="chip ch-off" onclick="filterChip(this)">Health</button>
+     </div>
+     <div style="overflow-y:auto;flex:1;background:var(--ios-bg-grouped)">
+      <div style="padding:16px 16px 24px">
+       <div class="art-list">
+        <div class="art-card" onclick="openArticle(0)"><div class="art-thumb at-g">🥕</div><div class="art-info"><div class="art-cat">Nutrition</div><div class="art-title">Introducing solids: a complete dad's guide</div><div class="art-meta">8 min · Dr. Sarah Chen</div></div><svg style="width:14px;height:14px;color:var(--ios-label-tertiary);flex-shrink:0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg></div>
+        <div class="art-card" onclick="openArticle(1)"><div class="art-thumb at-b">🧠</div><div class="art-info"><div class="art-cat">Development</div><div class="art-title">How your baby's brain grows in the first year</div><div class="art-meta">6 min · Dr. James Park</div></div><svg style="width:14px;height:14px;color:var(--ios-label-tertiary);flex-shrink:0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg></div>
+        <div class="art-card" onclick="openArticle(2)"><div class="art-thumb at-pk">🚨</div><div class="art-info"><div class="art-cat">Safety</div><div class="art-title">Choking first aid: what every dad must know</div><div class="art-meta">5 min · Red Cross</div></div><svg style="width:14px;height:14px;color:var(--ios-label-tertiary);flex-shrink:0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg></div>
+        <div class="art-card" onclick="openArticle(3)"><div class="art-thumb at-o">😴</div><div class="art-info"><div class="art-cat">Development</div><div class="art-title">Sleep training methods compared for new dads</div><div class="art-meta">10 min · Sleep Foundation</div></div><svg style="width:14px;height:14px;color:var(--ios-label-tertiary);flex-shrink:0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg></div>
+        <div class="art-card" onclick="openArticle(4)"><div class="art-thumb at-p">💉</div><div class="art-info"><div class="art-cat">Health</div><div class="art-title">Vaccine schedule: what to expect and when</div><div class="art-meta">7 min · AAP</div></div><svg style="width:14px;height:14px;color:var(--ios-label-tertiary);flex-shrink:0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg></div>
+        <div class="art-card" onclick="openArticle(5)"><div class="art-thumb at-g">🤱</div><div class="art-info"><div class="art-cat">Nutrition</div><div class="art-title">Allergen introduction: the 9 foods to know</div><div class="art-meta">9 min · Dr. Liu Wei</div></div><svg style="width:14px;height:14px;color:var(--ios-label-tertiary);flex-shrink:0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg></div>
+       </div>
+      </div>
+     </div>
+    </div><!-- /tp-education -->
+
+    <!-- ── PROFILE ── -->
+    <div class="tp" id="tp-profile">
+     <div class="tab-hdr"><div class="tab-title">Profile</div></div>
+     <div class="prof-scroll">
+      <div class="prof-hero">
+       <div class="prof-av">JW</div>
+       <div class="prof-name">James Wilson</div>
+       <div class="prof-email">james.wilson@email.com</div>
+       <div class="prof-stats">
+        <div class="ps"><div class="ps-v">8</div><div class="ps-l">Months</div></div>
+        <div class="ps"><div class="ps-v">124</div><div class="ps-l">Feeds</div></div>
+        <div class="ps"><div class="ps-v">9</div><div class="ps-l">Articles</div></div>
+       </div>
+      </div>
+
+      <div class="settings-section">
+       <div class="settings-section-label">Family</div>
+       <div class="settings-card">
+        <button class="si" onclick="showToast('Oliver\'s profile editor coming soon')">
+         <div class="si-ico">👶</div><div class="si-lbl">Oliver's profile</div>
+         <div class="si-ch"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg></div>
+        </button>
+       </div>
+      </div>
+
+      <div class="settings-section">
+       <div class="settings-section-label">Accessibility</div>
+       <div class="settings-card">
+        <div class="si" style="align-items:flex-start;cursor:default">
+         <div class="si-ico-text">Aa</div>
+         <div class="si-col">
+          <div class="si-lbl">Text Size</div>
+          <div class="seg-ctrl">
+           <button class="seg-btn" data-size="sm" onclick="setTextSize(this,'sm')">A</button>
+           <button class="seg-btn active" data-size="md" onclick="setTextSize(this,'md')">A</button>
+           <button class="seg-btn" data-size="lg" onclick="setTextSize(this,'lg')">A</button>
+           <button class="seg-btn" data-size="xl" onclick="setTextSize(this,'xl')">A</button>
+          </div>
+         </div>
+        </div>
+        <button class="si" onclick="toggleHighContrast()">
+         <div class="si-ico">◑</div><div class="si-lbl">High Contrast <span style="font:400 12px/1 var(--ios-font);color:var(--ios-label-tertiary)">WCAG AA</span></div>
+         <span class="si-toggle" id="a11y-contrast-sw"></span>
+        </button>
+        <button class="si" onclick="toggleBoldText()">
+         <div class="si-ico">𝐁</div><div class="si-lbl">Bold Text</div>
+         <span class="si-toggle" id="a11y-bold-sw"></span>
+        </button>
+        <button class="si" onclick="toggleReduceMotion()">
+         <div class="si-ico">✦</div><div class="si-lbl">Reduce Motion</div>
+         <span class="si-toggle" id="a11y-motion-sw"></span>
+        </button>
+       </div>
+      </div>
+
+      <div class="settings-section">
+       <div class="settings-section-label">Display</div>
+       <div class="settings-card">
+        <button class="si" onclick="toggleDark()">
+         <div class="si-ico">🌙</div><div class="si-lbl">Dark Mode</div>
+         <span class="si-toggle" id="dark-status"></span>
+        </button>
+       </div>
+      </div>
+
+      <div class="settings-section">
+       <div class="settings-section-label">UX Preferences</div>
+       <div class="settings-card">
+        <button class="si" onclick="toggleLargeTap()">
+         <div class="si-ico">👆</div>
+         <div>
+          <div class="si-lbl">Large Tap Areas</div>
+          <div style="font:400 12px/16px var(--ios-font);color:var(--ios-label-tertiary);margin-top:1px">Fitts's Law · Reduces tap errors</div>
+         </div>
+         <span class="si-toggle" id="ux-tap-sw"></span>
+        </button>
+        <button class="si" onclick="toggleCompact()">
+         <div class="si-ico">☰</div>
+         <div>
+          <div class="si-lbl">Compact View</div>
+          <div style="font:400 12px/16px var(--ios-font);color:var(--ios-label-tertiary);margin-top:1px">Hick's Law · Less cognitive load</div>
+         </div>
+         <span class="si-toggle" id="ux-compact-sw"></span>
+        </button>
+        <button class="si" onclick="openDesignPrinciples()">
+         <div class="si-ico">⚖️</div><div class="si-lbl">Design Principles</div>
+         <div class="si-ch"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg></div>
+        </button>
+       </div>
+      </div>
+
+      <div class="settings-section">
+       <div class="settings-section-label">Account</div>
+       <div class="settings-card">
+        <button class="si" onclick="showToast('3 reminders active: Feed at 7AM, 12PM, 5PM')">
+         <div class="si-ico">🔔</div><div class="si-lbl">Notifications</div><span class="si-badge">3</span>
+         <div class="si-ch"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg></div>
+        </button>
+        <button class="si" onclick="showToast('Feeding unit: oz · Method: Bottle + Breast')">
+         <div class="si-ico">🍼</div><div class="si-lbl">Feeding preferences</div>
+         <div class="si-ch"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg></div>
+        </button>
+        <button class="si" onclick="showToast('Your data is encrypted and never shared.')">
+         <div class="si-ico">🔒</div><div class="si-lbl">Privacy &amp; data</div>
+         <div class="si-ch"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg></div>
+        </button>
+        <button class="si" onclick="showToast('Help centre: dadpal.app/help')">
+         <div class="si-ico">❓</div><div class="si-lbl">Help &amp; support</div>
+         <div class="si-ch"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg></div>
+        </button>
+       </div>
+      </div>
+
+      <div class="settings-section">
+       <div class="settings-section-label">About</div>
+       <div class="settings-card">
+        <button class="si" onclick="showToast('Dad Pal v1.0.0 · Built with Apple HIG + Laws of UX')">
+         <div class="si-ico">ℹ️</div><div class="si-lbl">Version 1.0.0</div>
+         <span style="font:400 13px/1 var(--ios-font);color:var(--ios-label-tertiary)">Current</span>
+        </button>
+       </div>
+      </div>
+
+      <div class="settings-section" style="margin-bottom:32px">
+       <div class="settings-card">
+        <button class="si" onclick="goto('s-login')">
+         <div class="si-ico">🚪</div>
+         <div class="si-lbl si-danger">Sign out</div>
+        </button>
+       </div>
+      </div>
+     </div>
+    </div><!-- /tp-profile -->
+
+   </div><!-- /tab-panels -->
+
+   <!-- iOS Tab Bar -->
+   <nav class="bnav">
+    <button class="nbtn on" id="nb-home" data-tab="tp-home" onclick="switchTab('tp-home')">
+     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+     <span>Home</span>
+    </button>
+    <button class="nbtn" id="nb-feeding" data-tab="tp-feeding" onclick="switchTab('tp-feeding')">
+     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 2.38 1.19 4.47 3 5.74V17c0 .55.45 1 1 1h6c.55 0 1-.45 1-1v-2.26C17.81 13.47 19 11.38 19 9c0-3.87-3.13-7-7-7z"/><line x1="12" y1="17" x2="12" y2="22"/></svg>
+     <span>Feeding</span>
+    </button>
+    <button class="nbtn" id="nb-meals" data-tab="tp-meals" onclick="switchTab('tp-meals')">
+     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
+     <span>Meals</span>
+    </button>
+    <button class="nbtn" id="nb-education" data-tab="tp-education" onclick="switchTab('tp-education')">
+     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+     <span>Learn</span>
+    </button>
+    <button class="nbtn" id="nb-profile" data-tab="tp-profile" onclick="switchTab('tp-profile')">
+     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+     <span>Profile</span>
+    </button>
+   </nav>
+
+   <div class="hi"></div>
+
+   <!-- Add Food Modal -->
+   <div class="modal-overlay" id="modal-add-food" onclick="closeModal(event)">
+    <div class="bottom-sheet">
+     <div class="sheet-handle"></div>
+     <div class="sheet-header">
+      <span class="sheet-title">Log a feeding</span>
+      <button class="sheet-close" onclick="closeModal()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg></button>
+     </div>
+     <p style="font:400 13px/18px var(--ios-font);color:var(--ios-label-secondary);margin-bottom:10px;text-transform:uppercase;letter-spacing:0.35px">Food type</p>
+     <div class="food-types">
+      <button class="food-type-btn selected" data-type="Breast milk" onclick="selectFoodType(this)">🍼 Breast milk</button>
+      <button class="food-type-btn" data-type="Formula" onclick="selectFoodType(this)">🍼 Formula</button>
+      <button class="food-type-btn" data-type="Puree" onclick="selectFoodType(this)">🥣 Puree</button>
+      <button class="food-type-btn" data-type="Solid" onclick="selectFoodType(this)">🍞 Solid food</button>
+     </div>
+     <div class="sheet-field-card">
+      <div class="sheet-field">
+       <label>Amount</label>
+       <input type="number" id="food-amount" placeholder="oz or tbsp" min="0" step="0.5">
+      </div>
+      <div class="sheet-field">
+       <label>Time</label>
+       <input type="time" id="food-time">
+      </div>
+      <div class="sheet-field">
+       <label>Note</label>
+       <input type="text" id="food-note" placeholder="Optional">
+      </div>
+     </div>
+     <div style="margin-top:16px">
+      <button class="btn btn-p" onclick="submitFood()">Log Entry</button>
+     </div>
+    </div>
+   </div>
+
+  </div><!-- /s-main -->
+
+  <!-- ══════════════════════════════════════════
+       EMERGENCY
+  ══════════════════════════════════════════ -->
+  <div class="screen" id="s-emergency">
+   <div class="sb"><span class="sb-time"></span><span class="sb-icons">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 20h.01"/><path d="M7 20v-4"/><path d="M12 20v-8"/><path d="M17 20V8"/><path d="M22 4v16"/></svg>
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><line x1="12" x2="12.01" y1="20" y2="20"/></svg>
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="16" height="10" x="2" y="7" rx="2" ry="2"/><line x1="22" x2="22" y1="11" y2="13"/><rect x="4" y="9" width="10" height="6" rx="1" fill="currentColor" stroke="none"/></svg>
+   </span></div>
+   <div class="ios-nav-bar">
+    <button class="ios-nav-back" onclick="goto('s-main')"><svg viewBox="0 0 10 17" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 1.5L1.5 8.5L9 15.5"/></svg>Home</button>
+    <span class="ios-nav-title">Emergency</span>
+   </div>
+   <div class="emg-warning-banner">
+    <span style="font-size:18px;flex-shrink:0">🚨</span>
+    <span>For life-threatening emergencies, call <strong>911</strong> immediately.</span>
+   </div>
+   <div class="emg-outer">
+    <div class="emg-card-list">
+     <details class="emg-scenario">
+      <summary><div class="emg-s-ico">🫁</div><div class="emg-s-info"><div class="emg-s-title">Infant Choking</div><div class="emg-s-sub">For babies under 1 year</div></div><span class="emg-s-arrow">›</span></summary>
+      <div class="emg-steps">
+       <div class="emg-step"><div class="emg-step-n">1</div><div class="emg-step-txt">Call 911 immediately if baby becomes unresponsive.</div></div>
+       <div class="emg-step"><div class="emg-step-n">2</div><div class="emg-step-txt">Hold face-down on your forearm, head lower than chest. Support the head.</div></div>
+       <div class="emg-step"><div class="emg-step-n">3</div><div class="emg-step-txt">Give 5 firm back blows between the shoulder blades with the heel of your hand.</div></div>
+       <div class="emg-step"><div class="emg-step-n">4</div><div class="emg-step-txt">Flip face-up. Give 5 chest thrusts: 2 fingers on the breastbone just below the nipple line.</div></div>
+       <div class="emg-step"><div class="emg-step-n">5</div><div class="emg-step-txt">Check the mouth. Remove any clearly visible object — never do blind finger sweeps.</div></div>
+       <div class="emg-step"><div class="emg-step-n">6</div><div class="emg-step-txt">Repeat until the object dislodges or help arrives.</div></div>
+       <div class="emg-note">⚠️ Never do blind finger sweeps — you risk pushing the object deeper.</div>
+      </div>
+     </details>
+     <details class="emg-scenario">
+      <summary><div class="emg-s-ico">🌡️</div><div class="emg-s-info"><div class="emg-s-title">Fever</div><div class="emg-s-sub">Temperature above normal range</div></div><span class="emg-s-arrow">›</span></summary>
+      <div class="emg-steps">
+       <div class="emg-step"><div class="emg-step-n">1</div><div class="emg-step-txt">Take temperature rectally (most accurate for infants).</div></div>
+       <div class="emg-step"><div class="emg-step-n">2</div><div class="emg-step-txt">Under 3 months: ANY fever above 100.4°F (38°C) → call the doctor immediately.</div></div>
+       <div class="emg-step"><div class="emg-step-n">3</div><div class="emg-step-txt">3–6 months: fever above 102°F (38.9°C) → call the doctor.</div></div>
+       <div class="emg-step"><div class="emg-step-n">4</div><div class="emg-step-txt">Dress lightly. Offer plenty of fluids — breast milk, formula, or water if over 6 months.</div></div>
+       <div class="emg-step"><div class="emg-step-n">5</div><div class="emg-step-txt">Infant acetaminophen or ibuprofen (over 6 months) can help — follow the dosing chart.</div></div>
+       <div class="emg-note">⚠️ Febrile seizures can occur with rapid temperature rise. If baby seizes, call 911.</div>
+      </div>
+     </details>
+     <details class="emg-scenario">
+      <summary><div class="emg-s-ico">🤕</div><div class="emg-s-info"><div class="emg-s-title">Fall / Head Injury</div><div class="emg-s-sub">After a drop or impact to the head</div></div><span class="emg-s-arrow">›</span></summary>
+      <div class="emg-steps">
+       <div class="emg-step"><div class="emg-step-n">1</div><div class="emg-step-txt">Stay calm. Assess: is baby conscious, breathing, and responding?</div></div>
+       <div class="emg-step"><div class="emg-step-n">2</div><div class="emg-step-txt">Call 911 if: unconscious, seizures, repeated vomiting, or won't stop crying after 10 minutes.</div></div>
+       <div class="emg-step"><div class="emg-step-n">3</div><div class="emg-step-txt">Do NOT move baby if you suspect neck or spine injury.</div></div>
+       <div class="emg-step"><div class="emg-step-n">4</div><div class="emg-step-txt">If alert and crying (a good sign), apply a cold pack wrapped in cloth to any bumps.</div></div>
+       <div class="emg-step"><div class="emg-step-n">5</div><div class="emg-step-txt">Monitor closely for 24 hours. Keep baby awake for 1–2 hours after the fall.</div></div>
+       <div class="emg-note">💡 A bump (goose egg) is reassuring — swelling outside the skull, not inside.</div>
+      </div>
+     </details>
+     <details class="emg-scenario">
+      <summary><div class="emg-s-ico">🔴</div><div class="emg-s-info"><div class="emg-s-title">Allergic Reaction</div><div class="emg-s-sub">After new food or substance exposure</div></div><span class="emg-s-arrow">›</span></summary>
+      <div class="emg-steps">
+       <div class="emg-step"><div class="emg-step-n">1</div><div class="emg-step-txt">Watch for: hives, swelling of face/lips/tongue, vomiting, breathing difficulty.</div></div>
+       <div class="emg-step"><div class="emg-step-n">2</div><div class="emg-step-txt">Mild reaction (hives only) → call your doctor and monitor closely.</div></div>
+       <div class="emg-step"><div class="emg-step-n">3</div><div class="emg-step-txt">Severe reaction (anaphylaxis) → call 911 immediately.</div></div>
+       <div class="emg-step"><div class="emg-step-n">4</div><div class="emg-step-txt">If prescribed: use the EpiPen at the first sign of severe reaction.</div></div>
+       <div class="emg-step"><div class="emg-step-n">5</div><div class="emg-step-txt">After EpiPen: go to ER even if symptoms improve — a second wave can occur.</div></div>
+       <div class="emg-note">⚠️ Anaphylaxis moves fast. When in doubt, call 911.</div>
+      </div>
+     </details>
+     <details class="emg-scenario">
+      <summary><div class="emg-s-ico">❤️</div><div class="emg-s-info"><div class="emg-s-title">Infant CPR</div><div class="emg-s-sub">Baby is unresponsive and not breathing</div></div><span class="emg-s-arrow">›</span></summary>
+      <div class="emg-steps">
+       <div class="emg-step"><div class="emg-step-n">1</div><div class="emg-step-txt">Check response: tap the foot and call the baby's name loudly.</div></div>
+       <div class="emg-step"><div class="emg-step-n">2</div><div class="emg-step-txt">Call 911 and put on speaker while you start CPR.</div></div>
+       <div class="emg-step"><div class="emg-step-n">3</div><div class="emg-step-txt">Lay baby on a firm flat surface. Tilt head back slightly to open airway.</div></div>
+       <div class="emg-step"><div class="emg-step-n">4</div><div class="emg-step-txt">Give 2 gentle rescue breaths: cover both mouth AND nose. Watch for chest rise.</div></div>
+       <div class="emg-step"><div class="emg-step-n">5</div><div class="emg-step-txt">30 chest compressions: 2 fingers, centre of chest, push 1.5 inches at 100–120/min.</div></div>
+       <div class="emg-step"><div class="emg-step-n">6</div><div class="emg-step-txt">Repeat 30:2 ratio until baby responds or help arrives.</div></div>
+       <div class="emg-note">📋 Take a certified infant CPR class — hands-on practice is essential.</div>
+      </div>
+     </details>
+    </div>
+   </div>
+   <div class="hi"></div>
+  </div><!-- /s-emergency -->
+
+  <!-- ══════════════════════════════════════════
+       MILESTONES
+  ══════════════════════════════════════════ -->
+  <div class="screen" id="s-milestones">
+   <div class="sb"><span class="sb-time"></span><span class="sb-icons">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 20h.01"/><path d="M7 20v-4"/><path d="M12 20v-8"/><path d="M17 20V8"/><path d="M22 4v16"/></svg>
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><line x1="12" x2="12.01" y1="20" y2="20"/></svg>
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="16" height="10" x="2" y="7" rx="2" ry="2"/><line x1="22" x2="22" y1="11" y2="13"/><rect x="4" y="9" width="10" height="6" rx="1" fill="currentColor" stroke="none"/></svg>
+   </span></div>
+   <div class="ios-nav-bar">
+    <button class="ios-nav-back" onclick="goto('s-main')"><svg viewBox="0 0 10 17" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 1.5L1.5 8.5L9 15.5"/></svg>Home</button>
+    <span class="ios-nav-title">Milestones</span>
+   </div>
+   <div class="scroll">
+    <div style="padding:20px 16px 32px">
+     <div class="ms-progress-row">
+      <span class="ms-progress-label">Oliver · 8 months · 9 of 16</span>
+     </div>
+     <div class="ms-progress-bar"><div class="ms-progress-fill" style="width:56%"></div></div>
+
+     <div class="ms-group">
+      <div class="ms-group-label">0–3 months</div>
+      <div class="ms-card">
+       <div class="ms-item" onclick="toggleMs(this)" data-ms-id="ms1"><div class="ms-check ms-done">✓</div><div class="ms-lbl">Lifts head during tummy time</div><div class="ms-age">1 mo</div></div>
+       <div class="ms-item" onclick="toggleMs(this)" data-ms-id="ms2"><div class="ms-check ms-done">✓</div><div class="ms-lbl">Focuses on faces, makes eye contact</div><div class="ms-age">1 mo</div></div>
+       <div class="ms-item" onclick="toggleMs(this)" data-ms-id="ms3"><div class="ms-check ms-done">✓</div><div class="ms-lbl">Responds to sounds and voices</div><div class="ms-age">2 mo</div></div>
+       <div class="ms-item" onclick="toggleMs(this)" data-ms-id="ms4"><div class="ms-check ms-done">✓</div><div class="ms-lbl">First social smile</div><div class="ms-age">2–3 mo</div></div>
+      </div>
+     </div>
+     <div class="ms-group">
+      <div class="ms-group-label">3–6 months</div>
+      <div class="ms-card">
+       <div class="ms-item" onclick="toggleMs(this)" data-ms-id="ms5"><div class="ms-check ms-done">✓</div><div class="ms-lbl">Holds head steady without support</div><div class="ms-age">4 mo</div></div>
+       <div class="ms-item" onclick="toggleMs(this)" data-ms-id="ms6"><div class="ms-check ms-done">✓</div><div class="ms-lbl">Rolls from tummy to back</div><div class="ms-age">4–5 mo</div></div>
+       <div class="ms-item" onclick="toggleMs(this)" data-ms-id="ms7"><div class="ms-check ms-done">✓</div><div class="ms-lbl">Reaches for and grasps objects</div><div class="ms-age">5 mo</div></div>
+       <div class="ms-item" onclick="toggleMs(this)" data-ms-id="ms8"><div class="ms-check ms-done">✓</div><div class="ms-lbl">Laughs and squeals with delight</div><div class="ms-age">5–6 mo</div></div>
+      </div>
+     </div>
+     <div class="ms-group">
+      <div class="ms-group-label">6–9 months</div>
+      <div class="ms-card">
+       <div class="ms-item" onclick="toggleMs(this)" data-ms-id="ms9"><div class="ms-check ms-done">✓</div><div class="ms-lbl">Sits without support</div><div class="ms-age">6–7 mo</div></div>
+       <div class="ms-item" onclick="toggleMs(this)" data-ms-id="ms10"><div class="ms-check ms-done">✓</div><div class="ms-lbl">Responds to own name</div><div class="ms-age">7 mo</div></div>
+       <div class="ms-item" onclick="toggleMs(this)" data-ms-id="ms11"><div class="ms-check ms-pend"></div><div class="ms-lbl">Passes objects hand to hand</div><div class="ms-age">7–8 mo</div></div>
+       <div class="ms-item" onclick="toggleMs(this)" data-ms-id="ms12"><div class="ms-check ms-pend"></div><div class="ms-lbl">Begins crawling or scooting</div><div class="ms-age">8–9 mo</div></div>
+      </div>
+     </div>
+     <div class="ms-group">
+      <div class="ms-group-label">9–12 months</div>
+      <div class="ms-card">
+       <div class="ms-item" onclick="toggleMs(this)" data-ms-id="ms13"><div class="ms-check ms-pend"></div><div class="ms-lbl">Pulls to standing position</div><div class="ms-age">9–10 mo</div></div>
+       <div class="ms-item" onclick="toggleMs(this)" data-ms-id="ms14"><div class="ms-check ms-pend"></div><div class="ms-lbl">Pincer grasp (thumb + index finger)</div><div class="ms-age">9–10 mo</div></div>
+       <div class="ms-item" onclick="toggleMs(this)" data-ms-id="ms15"><div class="ms-check ms-pend"></div><div class="ms-lbl">Says "mama" or "dada" meaningfully</div><div class="ms-age">10–12 mo</div></div>
+       <div class="ms-item" onclick="toggleMs(this)" data-ms-id="ms16"><div class="ms-check ms-pend"></div><div class="ms-lbl">Takes first independent steps</div><div class="ms-age">11–13 mo</div></div>
+      </div>
+     </div>
+    </div>
+   </div>
+   <div class="hi"></div>
+  </div><!-- /s-milestones -->
+
+  <!-- ══════════════════════════════════════════
+       ARTICLE READER
+  ══════════════════════════════════════════ -->
+  <div class="screen" id="s-article">
+   <div class="sb"><span class="sb-time"></span><span class="sb-icons">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 20h.01"/><path d="M7 20v-4"/><path d="M12 20v-8"/><path d="M17 20V8"/><path d="M22 4v16"/></svg>
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><line x1="12" x2="12.01" y1="20" y2="20"/></svg>
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="16" height="10" x="2" y="7" rx="2" ry="2"/><line x1="22" x2="22" y1="11" y2="13"/><rect x="4" y="9" width="10" height="6" rx="1" fill="currentColor" stroke="none"/></svg>
+   </span></div>
+   <div class="ios-nav-bar">
+    <button class="ios-nav-back" onclick="goto('s-main')"><svg viewBox="0 0 10 17" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 1.5L1.5 8.5L9 15.5"/></svg>Learn</button>
+    <span class="ios-nav-title">Article</span>
+   </div>
+   <div class="scroll">
+    <div id="art-hero"></div>
+    <div style="padding:16px 16px 32px" id="art-body"></div>
+   </div>
+   <div class="hi"></div>
+  </div><!-- /s-article -->
+
+  <!-- ══════════════════════════════════════════
+       MEAL DETAIL
+  ══════════════════════════════════════════ -->
+  <div class="screen" id="s-meal-detail">
+   <div class="sb"><span class="sb-time"></span><span class="sb-icons">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 20h.01"/><path d="M7 20v-4"/><path d="M12 20v-8"/><path d="M17 20V8"/><path d="M22 4v16"/></svg>
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><line x1="12" x2="12.01" y1="20" y2="20"/></svg>
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="16" height="10" x="2" y="7" rx="2" ry="2"/><line x1="22" x2="22" y1="11" y2="13"/><rect x="4" y="9" width="10" height="6" rx="1" fill="currentColor" stroke="none"/></svg>
+   </span></div>
+   <div class="ios-nav-bar">
+    <button class="ios-nav-back" onclick="goto('s-main')"><svg viewBox="0 0 10 17" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 1.5L1.5 8.5L9 15.5"/></svg>Meals</button>
+    <span class="ios-nav-title">Recipe</span>
+   </div>
+   <div class="scroll">
+    <div id="meal-hero"></div>
+    <div style="padding:16px 16px 32px" id="meal-body"></div>
+   </div>
+   <div class="ftcta">
+    <button class="btn btn-p" id="meal-log-btn">Log this meal</button>
+   </div>
+   <div class="hi"></div>
+  </div><!-- /s-meal-detail -->
+
+  <!-- ══════════════════════════════════════════
+       DESIGN PRINCIPLES
+  ══════════════════════════════════════════ -->
+  <div class="screen" id="s-principles">
+   <div class="sb"><span class="sb-time"></span></div>
+   <div class="ios-nav-bar">
+    <button class="ios-nav-back" onclick="goto('s-main')"><svg viewBox="0 0 10 17" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 1.5L1.5 8.5L9 15.5"/></svg>Profile</button>
+    <span class="ios-nav-title">Design Principles</span>
+   </div>
+   <div class="scroll">
+    <div style="padding:20px 16px 32px">
+
+     <p style="font:400 13px/18px var(--ios-font);color:var(--ios-label-secondary);text-transform:uppercase;letter-spacing:0.35px;margin-bottom:12px;padding:0 4px">Laws of UX applied in Dad Pal</p>
+
+     <div class="settings-card" style="margin-bottom:24px">
+
+      <div class="principle-row">
+       <div class="pr-badge" style="background:rgba(0,122,255,0.1);color:var(--ios-blue)">Fitts</div>
+       <div class="pr-body">
+        <div class="pr-title">Fitts's Law</div>
+        <div class="pr-text">Time to reach a target = function of distance and size. All interactive elements are ≥ 44px — the iOS HIG minimum and Fitts-optimal for thumb-reach zones.</div>
+       </div>
+      </div>
+
+      <div class="principle-row">
+       <div class="pr-badge" style="background:rgba(52,199,89,0.1);color:var(--ios-green)">Hick</div>
+       <div class="pr-body">
+        <div class="pr-title">Hick's Law</div>
+        <div class="pr-text">Decision time grows logarithmically with options. Dad Pal uses five tabs (not more), short filter chip sets, and progressive disclosure — show the important, hide the rest.</div>
+       </div>
+      </div>
+
+      <div class="principle-row">
+       <div class="pr-badge" style="background:rgba(175,82,222,0.1);color:var(--ios-purple)">Jakob</div>
+       <div class="pr-body">
+        <div class="pr-title">Jakob's Law</div>
+        <div class="pr-text">Users spend most of their time in other apps. Dad Pal uses native iOS patterns — tab bars, grouped lists, swipe-to-go-back — so every interaction is already familiar.</div>
+       </div>
+      </div>
+
+      <div class="principle-row">
+       <div class="pr-badge" style="background:rgba(255,149,0,0.1);color:var(--ios-orange)">Miller</div>
+       <div class="pr-body">
+        <div class="pr-title">Miller's Law</div>
+        <div class="pr-text">Working memory holds 7 ± 2 items. Content is chunked into named sections (Today, Feeds, Milestones). No list exceeds 8 items without pagination or grouping.</div>
+       </div>
+      </div>
+
+      <div class="principle-row">
+       <div class="pr-badge" style="background:rgba(255,59,48,0.1);color:var(--ios-red)">Peak</div>
+       <div class="pr-body">
+        <div class="pr-title">Peak-End Rule</div>
+        <div class="pr-text">People judge experiences by their peak and their end. Milestone celebrations animate with a pop and a toast. Completing a feeding log shows warm confirmation — these moments are the peak.</div>
+       </div>
+      </div>
+
+      <div class="principle-row">
+       <div class="pr-badge" style="background:rgba(88,86,214,0.1);color:var(--ios-indigo)">Von R</div>
+       <div class="pr-body">
+        <div class="pr-title">Von Restorff Effect</div>
+        <div class="pr-text">Distinctive items are remembered. The emergency button is visually isolated — red background, high contrast, separate card — so it stands apart in any moment of panic.</div>
+       </div>
+      </div>
+
+      <div class="principle-row">
+       <div class="pr-badge" style="background:rgba(90,200,250,0.12);color:var(--ios-teal)">Zeig</div>
+       <div class="pr-body">
+        <div class="pr-title">Zeigarnik Effect</div>
+        <div class="pr-text">Incomplete tasks stay in memory longer. The milestones progress bar (9 of 16) creates a natural pull to complete. Pending items show unfilled circles that invite a tap.</div>
+       </div>
+      </div>
+
+      <div class="principle-row">
+       <div class="pr-badge" style="background:rgba(52,199,89,0.1);color:var(--ios-green)">400ms</div>
+       <div class="pr-body">
+        <div class="pr-title">Doherty Threshold</div>
+        <div class="pr-text">Productivity soars when response time is under 400ms. All screen transitions are 280ms. Tap feedback (active state dimming) is 140ms. Toast notifications appear within 50ms of action.</div>
+       </div>
+      </div>
+
+      <div class="principle-row" style="border-bottom:none">
+       <div class="pr-badge" style="background:rgba(255,149,0,0.1);color:var(--ios-orange)">Æsth</div>
+       <div class="pr-body">
+        <div class="pr-title">Aesthetic-Usability Effect</div>
+        <div class="pr-text">Beautiful interfaces are perceived as easier to use. Dad Pal follows Apple HIG precisely — 0.5px separators, SF Pro, 13px radius cards, backdrop blur nav bars — because craft signals trustworthiness.</div>
+       </div>
+      </div>
+
+     </div>
+
+     <p style="font:400 12px/18px var(--ios-font);color:var(--ios-label-tertiary);text-align:center;padding:0 16px">Reference: lawsofux.com · Apple Human Interface Guidelines · WCAG 2.1</p>
+    </div>
+   </div>
+   <div class="hi"></div>
+  </div><!-- /s-principles -->
+
+ </div><!-- /screens -->
+ <div class="toast" id="toast"></div>
+</div><!-- /phone -->
+
+<script type="module" src="/src/js/main.js"></script>
+</body>
+</html>

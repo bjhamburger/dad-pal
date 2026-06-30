@@ -1,0 +1,132 @@
+/* ============================================================
+   APPLE HIG TOKENS — Dad Pal
+   ============================================================ */
+
+:root {
+  /* ── System colors — Light ── */
+  --ios-blue:   #007AFF;
+  --ios-green:  #34C759;
+  --ios-indigo: #5856D6;
+  --ios-orange: #FF9500;
+  --ios-pink:   #FF2D55;
+  --ios-purple: #AF52DE;
+  --ios-red:    #FF3B30;
+  --ios-teal:   #5AC8FA;
+  --ios-yellow: #FFCC00;
+
+  --ios-gray-1: #8E8E93;
+  --ios-gray-2: #AEAEB2;
+  --ios-gray-3: #C7C7CC;
+  --ios-gray-4: #D1D1D6;
+  --ios-gray-5: #E5E5EA;
+  --ios-gray-6: #F2F2F7;
+
+  /* ── Label colors — Light ── */
+  --ios-label:            rgba(0, 0, 0, 1);
+  --ios-label-secondary:  rgba(60, 60, 67, 0.6);
+  --ios-label-tertiary:   rgba(60, 60, 67, 0.3);
+  --ios-label-quaternary: rgba(60, 60, 67, 0.18);
+
+  /* ── Backgrounds — Light ── */
+  --ios-bg:                   #FFFFFF;
+  --ios-bg-secondary:         #F2F2F7;
+  --ios-bg-tertiary:          #FFFFFF;
+  --ios-bg-grouped:           #F2F2F7;
+  --ios-bg-grouped-secondary: #FFFFFF;
+
+  --ios-separator: rgba(60, 60, 67, 0.12);
+  --ios-link:      #007AFF;
+
+  /* ── Touch / layout ── */
+  --ios-touch-target-min:      44px;
+  --ios-grid-unit:             8px;
+  --ios-screen-margin:         16px;
+  --ios-nav-bar-height:        44px;
+  --ios-tab-bar-height:        49px;
+  --ios-home-indicator-height: 34px;
+
+  /* ── Radius ── */
+  --ios-radius-control: 10px;
+  --ios-radius-card:    13px;
+  --ios-radius-sheet:   13px;
+
+  /* ── Type — San Francisco / SF Pro ── */
+  --ios-font: -apple-system, 'SF Pro Text', 'SF Pro Display', system-ui, sans-serif;
+
+  /* ── Legacy aliases — map Wise tokens → iOS so old CSS still compiles ── */
+  --font:    var(--ios-font);
+  --font-d:  var(--ios-font);
+  --g-forest: var(--ios-blue);
+  --g-bright: rgba(0, 122, 255, 0.12);
+  --red:      var(--ios-red);
+  --bg:       var(--ios-bg);
+  --bg-tint:  var(--ios-bg-grouped);
+  --bg-ov:    rgba(0, 0, 0, 0.05);
+  --bd:       var(--ios-separator);
+  --bd-s:     rgba(60, 60, 67, 0.07);
+  --t1:       var(--ios-label);
+  --t2:       var(--ios-label-secondary);
+  --t3:       var(--ios-label-tertiary);
+  --r-sm:     6px;
+  --r-md:     var(--ios-radius-control);
+  --r-lg:     var(--ios-radius-card);
+  --r-xl:     16px;
+  --r-pill:   100px;
+  --px:       var(--ios-screen-margin);
+  --ease-fast: 0.18s ease;
+  --ease-std:  0.28s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Dark mode is controlled ONLY by .phone.dark-mode — not system preference.
+   This keeps light mode always light regardless of OS setting. */
+
+/* Manual dark mode toggle — matches the media-query dark values */
+.phone.dark-mode {
+  --ios-blue:   #0A84FF;
+  --ios-green:  #30D158;
+  --ios-red:    #FF453A;
+  --ios-orange: #FF9F0A;
+  --ios-gray-1: #8E8E93;
+  --ios-gray-2: #636366;
+  --ios-gray-3: #48484A;
+  --ios-gray-4: #3A3A3C;
+  --ios-gray-5: #2C2C2E;
+  --ios-gray-6: #1C1C1E;
+  --ios-label:            rgba(255, 255, 255, 1);
+  --ios-label-secondary:  rgba(235, 235, 245, 0.6);
+  --ios-label-tertiary:   rgba(235, 235, 245, 0.3);
+  --ios-label-quaternary: rgba(235, 235, 245, 0.16);
+  --ios-bg:                   #000000;
+  --ios-bg-secondary:         #1C1C1E;
+  --ios-bg-tertiary:          #2C2C2E;
+  --ios-bg-grouped:           #000000;
+  --ios-bg-grouped-secondary: #1C1C1E;
+  --ios-separator:            rgba(84, 84, 88, 0.28);
+  --g-forest: #0A84FF;
+  --bg:       #000000;
+  --bg-tint:  #1C1C1E;
+  --bg-ov:    rgba(255, 255, 255, 0.08);
+  --bd:       rgba(84, 84, 88, 0.28);
+  --bd-s:     rgba(84, 84, 88, 0.16);
+  --t1:       rgba(255, 255, 255, 1);
+  --t2:       rgba(235, 235, 245, 0.6);
+  --t3:       rgba(235, 235, 245, 0.3);
+}
+
+/* Dynamic Type text styles */
+.ios-large-title { font: 700 34px/41px var(--ios-font); }
+.ios-title-1     { font: 700 28px/34px var(--ios-font); }
+.ios-title-2     { font: 700 22px/28px var(--ios-font); }
+.ios-title-3     { font: 600 20px/25px var(--ios-font); }
+.ios-headline    { font: 600 17px/22px var(--ios-font); }
+.ios-body        { font: 400 17px/22px var(--ios-font); }
+.ios-callout     { font: 400 16px/21px var(--ios-font); }
+.ios-subheadline { font: 400 15px/20px var(--ios-font); }
+.ios-footnote    { font: 400 13px/18px var(--ios-font); }
+.ios-caption-1   { font: 400 12px/16px var(--ios-font); }
+.ios-caption-2   { font: 400 11px/13px var(--ios-font); }
+
+.ios-tappable {
+  min-width:  var(--ios-touch-target-min);
+  min-height: var(--ios-touch-target-min);
+}

@@ -1,0 +1,18 @@
+{
+  "name": "Dad Pal",
+  "short_name": "DadPal",
+  "description": "Your guide to fatherhood — feeding, milestones, emergency guidance and more.",
+  "start_url": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#163300",
+  "theme_color": "#163300",
+  "icons": [
+    {
+      "src": "icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
